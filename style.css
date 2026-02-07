@@ -1,0 +1,398 @@
+:root {
+    --primary-pink: #ffafbd;
+    --secondary-pink: #ffc3a0;
+    --deep-pink: #ff6a88;
+    --soft-white: rgba(255, 255, 255, 0.8);
+    --glass-bg: rgba(255, 255, 255, 0.15);
+    --glass-border: rgba(255, 255, 255, 0.3);
+    --text-color: #4a4a4a;
+    --heart-color: #ff4d6d;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--primary-pink), var(--secondary-pink));
+    overflow-x: hidden;
+    overflow-y: auto;
+    color: var(--text-color);
+    padding: 40px 20px;
+}
+
+/* Background Animated Blobs */
+.background-blobs {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.blob {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 70%);
+    border-radius: 50%;
+    filter: blur(80px);
+    animation: move 20s infinite alternate linear;
+}
+
+.blob-1 {
+    top: -10%;
+    left: -10%;
+    background: var(--deep-pink);
+    opacity: 0.1;
+}
+
+.blob-2 {
+    bottom: -10%;
+    right: -10%;
+    background: #fff;
+    opacity: 0.2;
+}
+
+@keyframes move {
+    from {
+        transform: translate(0, 0);
+    }
+
+    to {
+        transform: translate(100px, 100px);
+    }
+}
+
+/* Main Container */
+.container {
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+    margin: auto;
+    z-index: 1;
+}
+
+/* Floating Rose CSS Art */
+.rose-container {
+    margin-bottom: 20px;
+    animation: float 4s ease-in-out infinite;
+    position: relative;
+    z-index: 2;
+}
+
+.rose {
+    position: relative;
+    width: 120px;
+    height: 180px;
+    margin: 0 auto;
+}
+
+.flower {
+    position: relative;
+    width: 90px;
+    height: 90px;
+    margin: 0 auto;
+    transform: rotate(-10deg);
+}
+
+/* Base petal style */
+.petal {
+    position: absolute;
+    width: 60px;
+    height: 70px;
+    background: radial-gradient(circle at 30% 30%,
+            #ffb3c1,
+            #e63946 60%,
+            #9b2226 100%);
+    border-radius: 60% 60% 40% 40%;
+    transform-origin: bottom center;
+    box-shadow:
+        inset -4px -6px 12px rgba(0, 0, 0, 0.25),
+        0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Individual petals */
+.petal:nth-child(1) {
+    transform: rotate(0deg) translateY(5px);
+    z-index: 5;
+}
+
+.petal:nth-child(2) {
+    transform: rotate(45deg) translate(8px, 0);
+    z-index: 4;
+}
+
+.petal:nth-child(3) {
+    transform: rotate(-45deg) translate(-8px, 0);
+    z-index: 4;
+}
+
+.petal:nth-child(4) {
+    transform: rotate(90deg) translate(6px, -6px);
+    z-index: 3;
+}
+
+.petal:nth-child(5) {
+    width: 35px;
+    height: 35px;
+    background: radial-gradient(circle, #ffccd5, #ff4d6d);
+    border-radius: 50%;
+    top: 28px;
+    left: 28px;
+    z-index: 6;
+    box-shadow: inset -2px -2px 6px rgba(0, 0, 0, 0.2);
+}
+
+
+
+
+.stem {
+    position: absolute;
+    width: 5px;
+    height: 100px;
+    background: linear-gradient(to bottom, #2d6a4f, #1b4332);
+    top: 65px;
+    left: 48%;
+    border-radius: 5px;
+}
+
+.leaf {
+    position: absolute;
+    width: 30px;
+    height: 18px;
+    background: #40916c;
+    border-radius: 50% 0 50% 0;
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.leaf:nth-of-type(1) {
+    top: 100px;
+    left: 20px;
+    transform: rotate(-35deg);
+}
+
+.leaf:nth-of-type(2) {
+    top: 125px;
+    left: 65px;
+    transform: rotate(35deg);
+    border-radius: 0 50% 0 50%;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(-2deg);
+    }
+
+    50% {
+        transform: translateY(-25px) rotate(2deg);
+    }
+}
+
+/* Glass Card */
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid var(--glass-border);
+    border-radius: 30px;
+    padding: 40px 30px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.heading {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #6d071a;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.05);
+    opacity: 0;
+    animation: fadeInDown 1s ease-out forwards;
+}
+
+.subheading {
+    font-weight: 300;
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    color: #8c2a38;
+    /* Slightly lighter wine for secondary text */
+    opacity: 0;
+    animation: fadeInDown 1s ease-out 0.3s forwards;
+}
+
+/* Button Styles */
+.btn {
+    background: #fff;
+    color: var(--deep-pink);
+    border: none;
+    padding: 15px 35px;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    opacity: 0;
+    animation: fadeInUp 1s ease-out 0.6s forwards;
+}
+
+.btn:hover {
+    transform: scale(1.05) translateY(-5px);
+    box-shadow: 0 15px 30px rgba(255, 106, 136, 0.3);
+    background: #fffafa;
+}
+
+.btn:active {
+    transform: scale(0.95);
+}
+
+/* Hidden Message */
+.message-container {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    overflow: hidden;
+}
+
+.hidden {
+    display: none;
+}
+
+.message-text {
+    line-height: 1.6;
+    font-style: italic;
+    font-family: 'Playfair Display', serif;
+    color: #6d071a;
+    /* Deep Wine Color */
+    font-size: 1.2rem;
+    animation: reveal 1s ease forwards;
+}
+
+@keyframes reveal {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hearts */
+.heart {
+    position: fixed;
+    color: var(--heart-color);
+    font-size: 1rem;
+    pointer-events: none;
+    animation: heartFloat linear forwards;
+    z-index: 10;
+}
+
+@keyframes heartFloat {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Mobile Responsive */
+@media (max-width: 480px) {
+    body {
+        padding: 20px 15px;
+    }
+
+    .heading {
+        font-size: 1.8rem;
+    }
+
+    .subheading {
+        font-size: 0.95rem;
+        margin-bottom: 20px;
+    }
+
+    .glass-card {
+        padding: 30px 15px;
+        border-radius: 20px;
+    }
+
+    .real-rose {
+        width: 100px;
+    }
+
+    .message-text {
+        font-size: 1.05rem;
+    }
+
+    .btn {
+        padding: 12px 25px;
+        font-size: 1rem;
+    }
+}
+
+/* Extra Small Devices */
+@media (max-width: 350px) {
+    .heading {
+        font-size: 1.5rem;
+    }
+
+    .real-rose {
+        width: 80px;
+    }
+}
+
+/* =========================
+   Realistic SVG Rose
+   ========================= */
+
+.real-rose {
+    width: 140px;
+    display: block;
+    margin: 0 auto;
+}
+
+
+.rose-container {
+    animation: float 4s ease-in-out infinite;
+}
